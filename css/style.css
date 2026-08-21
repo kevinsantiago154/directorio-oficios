@@ -1,0 +1,5568 @@
+/* ============================================================
+   TOKENS
+   ============================================================ */
+
+:root{
+  --bg: #1C2321;
+  --panel: #262F2C;
+  --panel-raised: #2E3833;
+  --rivet: #4A5551;
+  --line: #3A4440;
+
+  --spark: #E8A33D;
+  --spark-dim: #B8802F;
+  --teal: #7FA99B;
+
+  --text: #F1EDE4;
+  --text-dim: #A9B3AD;
+  --text-faint: #6E7A74;
+
+  --radius: 3px;
+
+  --font-display: "Oswald", "Arial Narrow", sans-serif;
+  --font-body: "Work Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+}
+
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+*{
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  margin: 0;
+  position: relative;
+
+  background: var(--bg);
+
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      rgba(255,255,255,0.012) 0px,
+      rgba(255,255,255,0.012) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+
+  color: var(--text);
+
+  font-family: var(--font-body);
+
+  line-height: 1.5;
+
+  -webkit-font-smoothing: antialiased;
+
+  overflow-x: hidden;
+}
+
+button,
+input{
+  font: inherit;
+}
+
+a{
+  color: inherit;
+}
+
+::selection{
+  background: var(--spark);
+  color: var(--bg);
+}
+
+:focus-visible{
+  outline: 2px solid var(--spark);
+  outline-offset: 2px;
+}
+
+
+/* ============================================================
+   RESPLANDOR DORADO
+   ============================================================ */
+
+.ember-glow{
+  position: fixed;
+
+  top: -10%;
+  right: -10%;
+
+  width: 60vw;
+  height: 60vw;
+
+  max-width: 900px;
+  max-height: 900px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(232,163,61,0.16) 0%,
+      rgba(232,163,61,0.07) 35%,
+      transparent 70%
+    );
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+
+/* ============================================================
+   PARTÍCULAS
+   ============================================================ */
+
+.particles{
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  overflow: hidden;
+
+  z-index: 1;
+}
+
+.particle{
+  position: absolute;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(232,163,61,0.9) 0%,
+      rgba(232,163,61,0.35) 45%,
+      transparent 75%
+    );
+
+  opacity: 0;
+
+  animation-name: particleFloat;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes particleFloat{
+
+  0%{
+    opacity: 0;
+    transform: translateY(0) scale(0.8);
+  }
+
+  15%{
+    opacity: 1;
+  }
+
+  50%{
+    opacity: 0.6;
+  }
+
+  85%{
+    opacity: 0;
+  }
+
+  100%{
+    transform:
+      translateY(-90px)
+      translateX(12px)
+      scale(1.1);
+
+    opacity: 0;
+  }
+
+}
+
+
+/* ============================================================
+   CAPAS
+   ============================================================ */
+
+.site-header,
+main,
+.site-footer{
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ============================================================
+   ANIMACIONES
+   ============================================================ */
+
+@keyframes fadeUp{
+
+  from{
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+@keyframes popIn{
+
+  from{
+    opacity: 0;
+    transform:
+      translateY(10px)
+      scale(0.98);
+  }
+
+  to{
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+@keyframes sectionIn{
+
+  from{
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* ============================================================
+   LOGO
+   ============================================================ */
+
+@keyframes logoGiro{
+
+  from{
+    transform: rotate(0deg);
+  }
+
+  to{
+    transform: rotate(360deg);
+  }
+
+}
+
+.logo-ring{
+
+  transform-box: fill-box;
+
+  transform-origin: center center;
+
+  animation:
+    logoGiro
+    8s
+    linear
+    infinite;
+
+  will-change: transform;
+}
+
+.logo-ring circle[r="3.5"]{
+
+  fill: var(--spark);
+
+  filter:
+    drop-shadow(
+      0 0 3px
+      rgba(232,163,61,0.7)
+    );
+}
+
+.logo-ring circle[r="80"]{
+
+  stroke: var(--spark-dim);
+}
+
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+
+.reveal{
+
+  opacity: 1;
+
+  animation-name: fadeUp;
+
+  animation-duration: 0.6s;
+
+  animation-timing-function: ease;
+
+  animation-fill-mode: forwards;
+}
+
+.reveal-1{
+  animation-delay: 0s;
+}
+
+.reveal-2{
+  animation-delay: 0.08s;
+}
+
+.reveal-3{
+  animation-delay: 0.16s;
+}
+
+.reveal-4{
+  animation-delay: 0.24s;
+}
+
+.reveal-5{
+  animation-delay: 0.32s;
+}
+
+
+/* ============================================================
+   CONTENEDOR
+   ============================================================ */
+
+.wrap{
+
+  max-width: 1080px;
+
+  margin: 0 auto;
+
+  padding: 0 24px;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.site-header{
+
+  padding: 40px 0 0;
+
+  border-bottom: 1px solid var(--line);
+}
+
+
+/* ============================================================
+   MARCA
+   ============================================================ */
+
+.brand{
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-bottom: 28px;
+
+  flex-wrap: wrap;
+}
+
+.brand-mark{
+
+  font-family: var(--font-mono);
+
+  font-size: 12px;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+
+  color: var(--spark);
+
+  display: block;
+}
+
+.brand-location{
+
+  font-family: var(--font-mono);
+
+  font-size: 12px;
+
+  letter-spacing: 0.1em;
+
+  color: var(--text-faint);
+
+  display: block;
+
+  margin-top: 4px;
+}
+
+
+/* ============================================================
+   NAVEGACIÓN NUEVA
+   ============================================================ */
+
+.main-nav{
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  flex-wrap: wrap;
+}
+
+.nav-btn{
+
+  border: 1px solid transparent;
+
+  background: transparent;
+
+  color: var(--text-faint);
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  padding: 8px 10px;
+
+  cursor: pointer;
+
+  border-radius: var(--radius);
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-btn:hover{
+
+  color: var(--text);
+
+  border-color: var(--line);
+
+  background: var(--panel);
+}
+
+.nav-btn.active{
+
+  color: var(--spark);
+
+  border-color: var(--spark-dim);
+
+  background:
+    rgba(232,163,61,0.06);
+}
+
+.nav-btn:active{
+
+  transform: scale(0.96);
+}
+
+
+/* ============================================================
+   SECCIONES / PESTAÑAS
+   ============================================================ */
+
+.page-section{
+
+  display: none;
+
+  animation:
+    sectionIn
+    0.35s
+    ease
+    forwards;
+}
+
+.page-section.active-section{
+
+  display: block;
+}
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.hero{
+
+  padding: 8px 0 44px;
+}
+
+.hero-inner{
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 36px;
+}
+
+.hero-content{
+
+  flex: 1 1 520px;
+
+  min-width: 0;
+}
+
+
+/* ============================================================
+   LOGO HERO
+   ============================================================ */
+
+.hero-logo{
+
+  flex: 0 0 auto;
+
+  width: 280px;
+
+  padding-top: 0;
+
+  transform:
+    translateX(-60px);
+
+  transition:
+    transform 0.3s ease;
+}
+
+.logo-mark{
+
+  width: 100%;
+
+  height: auto;
+
+  display: block;
+}
+
+.hero-logo:hover{
+
+  transform:
+    translateX(-60px)
+    scale(1.04);
+}
+
+
+/* ============================================================
+   TITULO
+   ============================================================ */
+
+.hero h1{
+
+  font-family: var(--font-display);
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  font-size:
+    clamp(
+      34px,
+      6vw,
+      58px
+    );
+
+  line-height: 1.04;
+
+  letter-spacing: 0.005em;
+
+  margin: 0 0 14px;
+
+  max-width: 15ch;
+}
+
+.hero h1 .accent{
+
+  color: var(--spark);
+}
+
+
+/* ============================================================
+   DESCRIPCIÓN
+   ============================================================ */
+
+.hero p{
+
+  font-size: 16px;
+
+  color: var(--text-dim);
+
+  max-width: 46ch;
+
+  margin: 0 0 32px;
+}
+
+
+/* ============================================================
+   BUSCADOR
+   ============================================================ */
+
+.search-ticket{
+
+  position: relative;
+
+  background: var(--panel);
+
+  border: 1px solid var(--line);
+
+  border-radius: var(--radius);
+
+  padding: 18px 20px 20px;
+}
+
+.search-ticket::before{
+
+  content: "";
+
+  position: absolute;
+
+  top: -1px;
+
+  left: 24px;
+
+  right: 24px;
+
+  height: 1px;
+
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      var(--bg) 0 6px,
+      var(--line) 6px 8px
+    );
+}
+
+.ticket-label{
+
+  font-family: var(--font-mono);
+
+  font-size: 11px;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+
+  color: var(--text-faint);
+
+  display: block;
+
+  margin-bottom: 10px;
+}
+
+
+/* ============================================================
+   BUSCADOR INPUT
+   ============================================================ */
+
+.search-row{
+
+  display: flex;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+}
+
+#buscador{
+
+  flex: 1 1 260px;
+
+  background: var(--bg);
+
+  border: 1px solid var(--line);
+
+  border-radius: var(--radius);
+
+  color: var(--text);
+
+  font-family: var(--font-body);
+
+  font-size: 16px;
+
+  padding: 13px 14px;
+}
+
+#buscador::placeholder{
+
+  color: var(--text-faint);
+}
+
+#buscador:focus{
+
+  border-color: var(--spark);
+
+  outline: none;
+}
+
+
+/* ============================================================
+   CHIPS
+   ============================================================ */
+
+.chips{
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 16px;
+}
+
+.chip{
+
+  font-family: var(--font-mono);
+
+  font-size: 11px;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  background: transparent;
+
+  border: 1px solid var(--line);
+
+  color: var(--text-dim);
+
+  border-radius: 999px;
+
+  padding: 7px 13px;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.chip:hover{
+
+  border-color: var(--teal);
+
+  color: var(--text);
+}
+
+.chip:active{
+
+  transform: scale(0.95);
+}
+
+.chip.active{
+
+  border-color: var(--spark);
+
+  color: var(--spark);
+}
+
+
+/* ============================================================
+   RESULTADOS
+   ============================================================ */
+
+.results-bar{
+
+  padding: 28px 0 4px;
+
+  display: flex;
+
+  align-items: baseline;
+
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+.results-count{
+
+  font-family: var(--font-mono);
+
+  font-size: 12px;
+
+  letter-spacing: 0.08em;
+
+  color: var(--text-faint);
+
+  text-transform: uppercase;
+}
+
+
+/* ============================================================
+   GRID
+   ============================================================ */
+
+.grid{
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(260px, 1fr)
+    );
+
+  gap: 18px;
+
+  padding: 20px 0 64px;
+}
+
+
+/* ============================================================
+   TARJETAS
+   ============================================================ */
+
+.card{
+
+  position: relative;
+
+  background: var(--panel);
+
+  border: 1px solid var(--line);
+
+  border-radius: var(--radius);
+
+  padding: 18px;
+
+  opacity: 1;
+
+  animation:
+    popIn 0.45s ease forwards;
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.card:hover{
+
+  transform: translateY(-3px);
+
+  border-color: var(--rivet);
+
+  box-shadow:
+    0 14px 28px rgba(0,0,0,0.35);
+}
+
+.card:hover .badge{
+
+  box-shadow:
+    0 0 0 3px
+    rgba(232,163,61,0.15);
+}
+
+
+/* ============================================================
+   REMACHES
+   ============================================================ */
+
+.card::before,
+.card::after,
+.card .rivet-l,
+.card .rivet-r{
+
+  content: "";
+
+  position: absolute;
+
+  width: 6px;
+
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--rivet);
+
+  box-shadow:
+    inset 0 1px 1px rgba(0,0,0,0.5),
+    0 1px 0 rgba(255,255,255,0.04);
+}
+
+.card::before{
+
+  top: 9px;
+  left: 9px;
+}
+
+.card::after{
+
+  top: 9px;
+  right: 9px;
+}
+
+.card .rivet-l{
+
+  bottom: 9px;
+  left: 9px;
+}
+
+.card .rivet-r{
+
+  bottom: 9px;
+  right: 9px;
+}
+
+
+/* ============================================================
+   TARJETA SUPERIOR
+   ============================================================ */
+
+.card-top{
+
+  display: flex;
+
+  gap: 14px;
+
+  align-items: center;
+}
+
+.card-photo{
+
+  width: 64px;
+
+  height: 64px;
+
+  border-radius: var(--radius);
+
+  object-fit: cover;
+
+  border: 1px solid var(--line);
+
+  flex-shrink: 0;
+}
+
+.card-id{
+
+  min-width: 0;
+}
+
+.card-empresa{
+
+  font-family: var(--font-display);
+
+  text-transform: uppercase;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.01em;
+
+  margin: 0 0 2px;
+
+  overflow-wrap: break-word;
+}
+
+.card-nombre{
+
+  font-size: 13px;
+
+  color: var(--text-dim);
+
+  margin: 0;
+}
+
+
+/* ============================================================
+   CATEGORÍA
+   ============================================================ */
+
+.badge{
+
+  display: inline-block;
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  color: var(--spark);
+
+  border: 1px solid var(--spark-dim);
+
+  border-radius: 999px;
+
+  padding: 4px 10px;
+
+  margin: 14px 0 10px;
+
+  transition:
+    box-shadow 0.18s ease;
+}
+
+
+/* ============================================================
+   DESCRIPCIÓN
+   ============================================================ */
+
+.card-desc{
+
+  font-size: 14px;
+
+  color: var(--text-dim);
+
+  margin: 0 0 16px;
+
+  line-height: 1.55;
+}
+
+
+/* ============================================================
+   ACCIONES
+   ============================================================ */
+
+.card-actions{
+
+  display: flex;
+
+  gap: 8px;
+
+  border-top: 1px dashed var(--line);
+
+  padding-top: 12px;
+}
+
+.btn-whatsapp{
+
+  font-family: var(--font-mono);
+
+  font-size: 11px;
+
+  letter-spacing: 0.06em;
+
+  text-transform: uppercase;
+
+  text-decoration: none;
+
+  color: var(--bg);
+
+  background: var(--teal);
+
+  border-radius: var(--radius);
+
+  padding: 8px 12px;
+
+  transition:
+    filter 0.15s ease;
+}
+
+.btn-whatsapp:hover{
+
+  filter: brightness(1.1);
+}
+
+.no-phone{
+
+  font-family: var(--font-mono);
+
+  font-size: 11px;
+
+  color: var(--text-faint);
+}
+
+
+/* ============================================================
+   ESTADO VACÍO
+   ============================================================ */
+
+.empty-state{
+
+  grid-column: 1 / -1;
+
+  text-align: center;
+
+  padding: 60px 20px;
+
+  border: 1px dashed var(--line);
+
+  border-radius: var(--radius);
+}
+
+.empty-state p:first-child{
+
+  font-family: var(--font-display);
+
+  text-transform: uppercase;
+
+  font-size: 22px;
+
+  letter-spacing: 0.02em;
+
+  color: var(--text);
+
+  margin: 0 0 8px;
+}
+
+.empty-state p:last-child{
+
+  color: var(--text-faint);
+
+  font-size: 14px;
+
+  margin: 0;
+}
+
+
+/* ============================================================
+   ============================================================
+   NUEVAS SECCIONES
+   ============================================================
+   ============================================================ */
+
+
+/* ============================================================
+   ENCABEZADO DE SECCIÓN
+   ============================================================ */
+
+.section-heading{
+
+  padding:
+    45px
+    0
+    34px;
+
+  max-width: 720px;
+}
+
+.section-kicker{
+
+  display: inline-block;
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+
+  letter-spacing: 0.16em;
+
+  color: var(--spark);
+
+  border-left:
+    3px solid var(--spark);
+
+  padding-left: 10px;
+
+  margin-bottom: 14px;
+}
+
+.section-heading h2{
+
+  font-family: var(--font-display);
+
+  font-size:
+    clamp(
+      38px,
+      6vw,
+      60px
+    );
+
+  line-height: 0.98;
+
+  text-transform: uppercase;
+
+  margin: 0 0 16px;
+
+  letter-spacing: 0.01em;
+}
+
+.section-heading h2 .accent{
+
+  color: var(--spark);
+}
+
+.section-heading p{
+
+  max-width: 60ch;
+
+  color: var(--text-dim);
+
+  margin: 0;
+
+  font-size: 16px;
+}
+
+
+/* ============================================================
+   PLANES
+   ============================================================ */
+
+.plans-grid{
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0,1fr)
+    );
+
+  gap: 18px;
+
+  padding-bottom: 34px;
+}
+
+.plan-card{
+
+  position: relative;
+
+  background: var(--panel);
+
+  border:
+    1px solid var(--line);
+
+  border-radius: var(--radius);
+
+  padding: 28px 22px 22px;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.plan-card::before{
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 2px;
+
+  background:
+    var(--line);
+}
+
+.plan-card:hover{
+
+  transform: translateY(-5px);
+
+  border-color: var(--spark-dim);
+
+  box-shadow:
+    0 18px 35px
+    rgba(0,0,0,0.32);
+}
+
+.plan-card.featured{
+
+  border-color:
+    var(--spark-dim);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(232,163,61,0.08),
+      transparent 45%
+    ),
+    var(--panel);
+}
+
+.plan-card.featured::before{
+
+  background: var(--spark);
+}
+
+.plan-number{
+
+  font-family: var(--font-mono);
+
+  color: var(--text-faint);
+
+  font-size: 11px;
+
+  margin-bottom: 14px;
+}
+
+.plan-label{
+
+  font-family: var(--font-mono);
+
+  color: var(--spark);
+
+  font-size: 10px;
+
+  letter-spacing: 0.14em;
+
+  display: block;
+
+  margin-bottom: 8px;
+}
+
+.plan-card h3{
+
+  font-family: var(--font-display);
+
+  text-transform: uppercase;
+
+  font-size: 28px;
+
+  line-height: 1;
+
+  margin: 0 0 12px;
+}
+
+.plan-description{
+
+  color: var(--text-dim);
+
+  font-size: 14px;
+
+  min-height: 66px;
+
+  margin: 0 0 20px;
+}
+
+.plan-price{
+
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 7px;
+
+  padding:
+    14px 0;
+
+  border-top:
+    1px dashed var(--line);
+
+  border-bottom:
+    1px dashed var(--line);
+
+  margin-bottom: 18px;
+}
+
+.plan-price span{
+
+  font-family: var(--font-display);
+
+  color: var(--spark);
+
+  font-size: 25px;
+
+  text-transform: uppercase;
+}
+
+.plan-price small{
+
+  font-family: var(--font-mono);
+
+  color: var(--text-faint);
+
+  font-size: 9px;
+
+  text-transform: uppercase;
+}
+
+.plan-features{
+
+  list-style: none;
+
+  padding: 0;
+
+  margin: 0 0 22px;
+}
+
+.plan-features li{
+
+  display: flex;
+
+  gap: 9px;
+
+  color: var(--text-dim);
+
+  font-size: 13px;
+
+  padding: 7px 0;
+
+  border-bottom:
+    1px solid
+    rgba(58,68,64,0.5);
+}
+
+.plan-features li:last-child{
+
+  border-bottom: none;
+}
+
+.plan-features li span{
+
+  color: var(--spark);
+
+  font-family: var(--font-mono);
+
+  font-weight: 600;
+}
+
+.plan-button{
+
+  width: 100%;
+
+  border: 1px solid var(--spark-dim);
+
+  background: transparent;
+
+  color: var(--spark);
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  padding: 12px;
+
+  cursor: pointer;
+
+  border-radius: var(--radius);
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.plan-button:hover{
+
+  background: var(--spark);
+
+  color: var(--bg);
+}
+
+.plan-button:active{
+
+  transform: scale(0.98);
+}
+
+.popular-label{
+
+  position: absolute;
+
+  top: 13px;
+
+  right: -28px;
+
+  transform: rotate(45deg);
+
+  width: 120px;
+
+  text-align: center;
+
+  background: var(--spark);
+
+  color: var(--bg);
+
+  font-family: var(--font-mono);
+
+  font-size: 8px;
+
+  letter-spacing: 0.08em;
+
+  padding: 4px 0;
+
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   AYUDA PLANES
+   ============================================================ */
+
+.plans-help{
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 24px;
+
+  background: var(--panel);
+
+  border:
+    1px solid var(--line);
+
+  padding: 24px;
+
+  margin-bottom: 70px;
+}
+
+.help-kicker{
+
+  font-family: var(--font-mono);
+
+  color: var(--spark);
+
+  font-size: 9px;
+
+  letter-spacing: 0.14em;
+}
+
+.plans-help h3{
+
+  font-family: var(--font-display);
+
+  text-transform: uppercase;
+
+  font-size: 25px;
+
+  margin: 4px 0;
+}
+
+.plans-help p{
+
+  color: var(--text-dim);
+
+  font-size: 13px;
+
+  margin: 0;
+}
+
+.whatsapp-main-button{
+
+  flex-shrink: 0;
+
+  border: 1px solid var(--teal);
+
+  background: var(--teal);
+
+  color: var(--bg);
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+
+  padding: 12px 16px;
+
+  cursor: pointer;
+
+  border-radius: var(--radius);
+
+  transition:
+    filter 0.2s ease,
+    transform 0.15s ease;
+}
+
+.whatsapp-main-button:hover{
+
+  filter: brightness(1.1);
+
+  transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   SOBRE NOSOTROS
+   ============================================================ */
+
+.about-layout{
+
+  display: grid;
+
+  grid-template-columns:
+    1.15fr
+    0.85fr;
+
+  gap: 22px;
+
+  padding-bottom: 24px;
+}
+
+.about-main{
+
+  position: relative;
+
+  background: var(--panel);
+
+  border: 1px solid var(--line);
+
+  padding: 34px;
+
+  min-height: 360px;
+}
+
+.about-main::before{
+
+  content: "";
+
+  position: absolute;
+
+  top: 12px;
+  left: 12px;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--rivet);
+}
+
+.about-main::after{
+
+  content: "";
+
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--rivet);
+}
+
+.about-mark{
+
+  display: block;
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+
+  line-height: 1.3;
+
+  letter-spacing: 0.12em;
+
+  color: var(--spark);
+
+  margin-bottom: 28px;
+}
+
+.about-main h3{
+
+  font-family: var(--font-display);
+
+  font-size:
+    clamp(
+      32px,
+      4vw,
+      46px
+    );
+
+  text-transform: uppercase;
+
+  line-height: 1;
+
+  margin: 0 0 22px;
+
+  max-width: 15ch;
+}
+
+.about-main p{
+
+  color: var(--text-dim);
+
+  font-size: 14px;
+
+  max-width: 62ch;
+}
+
+.about-points{
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.about-point{
+
+  display: flex;
+
+  gap: 16px;
+
+  background: var(--panel);
+
+  border: 1px solid var(--line);
+
+  padding: 20px;
+
+  flex: 1;
+}
+
+.point-number{
+
+  font-family: var(--font-mono);
+
+  color: var(--spark);
+
+  font-size: 11px;
+}
+
+.about-point h4{
+
+  font-family: var(--font-display);
+
+  text-transform: uppercase;
+
+  font-size: 20px;
+
+  margin: 0 0 5px;
+}
+
+.about-point p{
+
+  color: var(--text-dim);
+
+  font-size: 13px;
+
+  margin: 0;
+}
+
+.about-mission{
+
+  display: grid;
+
+  grid-template-columns:
+    180px
+    1fr;
+
+  gap: 20px;
+
+  align-items: center;
+
+  border-top:
+    1px dashed var(--line);
+
+  border-bottom:
+    1px dashed var(--line);
+
+  padding: 25px 0;
+
+  margin-bottom: 70px;
+}
+
+.about-mission span{
+
+  font-family: var(--font-mono);
+
+  color: var(--spark);
+
+  font-size: 10px;
+
+  letter-spacing: 0.12em;
+}
+
+.about-mission p{
+
+  margin: 0;
+
+  font-family: var(--font-display);
+
+  text-transform: uppercase;
+
+  font-size: 21px;
+
+  line-height: 1.2;
+}
+
+
+/* ============================================================
+   BENEFICIOS
+   ============================================================ */
+
+.benefits-grid{
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0,1fr)
+    );
+
+  gap: 18px;
+
+  padding-bottom: 28px;
+}
+
+.benefit-card{
+
+  background: var(--panel);
+
+  border: 1px solid var(--line);
+
+  padding: 28px;
+
+  position: relative;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.benefit-card:hover{
+
+  transform: translateY(-4px);
+
+  border-color: var(--spark-dim);
+
+  background: var(--panel-raised);
+}
+
+.benefit-icon{
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 42px;
+
+  height: 42px;
+
+  border: 1px solid var(--spark-dim);
+
+  color: var(--spark);
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+
+  margin-bottom: 24px;
+}
+
+.benefit-card h3{
+
+  font-family: var(--font-display);
+
+  text-transform: uppercase;
+
+  font-size: 29px;
+
+  margin: 0 0 9px;
+}
+
+.benefit-card p{
+
+  color: var(--text-dim);
+
+  font-size: 14px;
+
+  margin: 0;
+
+  max-width: 50ch;
+}
+
+.benefits-cta{
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 25px;
+
+  padding: 28px;
+
+  margin-bottom: 70px;
+
+  background:
+    linear-gradient(
+      100deg,
+      rgba(232,163,61,0.10),
+      transparent
+    );
+
+  border: 1px solid var(--spark-dim);
+}
+
+.benefits-cta span{
+
+  font-family: var(--font-mono);
+
+  font-size: 9px;
+
+  letter-spacing: 0.15em;
+
+  color: var(--spark);
+}
+
+.benefits-cta h3{
+
+  font-family: var(--font-display);
+
+  text-transform: uppercase;
+
+  font-size: 28px;
+
+  margin: 5px 0 0;
+}
+
+.cta-button{
+
+  flex-shrink: 0;
+
+  background: var(--spark);
+
+  color: var(--bg);
+
+  text-decoration: none;
+
+  font-family: var(--font-mono);
+
+  text-transform: uppercase;
+
+  font-size: 10px;
+
+  letter-spacing: 0.08em;
+
+  padding: 13px 17px;
+
+  border-radius: var(--radius);
+
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.cta-button:hover{
+
+  transform: translateY(-2px);
+
+  filter: brightness(1.08);
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.site-footer{
+
+  border-top: 1px solid var(--line);
+
+  padding: 24px 0 40px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  font-family: var(--font-mono);
+
+  font-size: 11px;
+
+  color: var(--text-faint);
+
+  letter-spacing: 0.05em;
+}
+
+.site-footer a{
+
+  color: var(--text-faint);
+
+  text-decoration: none;
+
+  border-bottom: 1px dotted var(--text-faint);
+}
+
+.site-footer a:hover{
+
+  color: var(--spark);
+
+  border-color: var(--spark);
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px){
+
+  .plans-grid{
+
+    grid-template-columns: 1fr;
+  }
+
+  .plan-description{
+
+    min-height: auto;
+  }
+
+  .about-layout{
+
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 780px){
+
+  .site-header{
+
+    padding-top: 25px;
+  }
+
+  .brand{
+
+    align-items: flex-start;
+  }
+
+  .main-nav{
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    padding-bottom: 4px;
+
+    scrollbar-width: none;
+  }
+
+  .main-nav::-webkit-scrollbar{
+
+    display: none;
+  }
+
+  .nav-btn{
+
+    flex-shrink: 0;
+  }
+
+  .hero-inner{
+
+    flex-direction: column-reverse;
+
+    align-items: center;
+
+    text-align: left;
+  }
+
+  .hero-logo{
+
+    width: 130px;
+
+    align-self: center;
+
+    margin: 0 auto 4px;
+
+    transform: none;
+  }
+
+  .hero-logo:hover{
+
+    transform: scale(1.04);
+  }
+
+  .hero-content{
+
+    width: 100%;
+  }
+
+  .ember-glow{
+
+    width: 90vw;
+
+    height: 90vw;
+  }
+
+  .plans-help{
+
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .whatsapp-main-button{
+
+    width: 100%;
+  }
+
+  .benefits-grid{
+
+    grid-template-columns: 1fr;
+  }
+
+  .benefits-cta{
+
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .cta-button{
+
+    width: 100%;
+
+    text-align: center;
+  }
+
+  .about-mission{
+
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 420px){
+
+  .wrap{
+
+    padding-left: 16px;
+
+    padding-right: 16px;
+  }
+
+  .hero{
+
+    padding-bottom: 30px;
+  }
+
+  .hero h1{
+
+    font-size: 34px;
+  }
+
+  .hero-logo{
+
+    width: 120px;
+  }
+
+  .section-heading{
+
+    padding-top: 35px;
+  }
+
+  .plan-card{
+
+    padding: 25px 18px 18px;
+  }
+
+  .about-main{
+
+    padding: 25px 20px;/* ============================================================
+   TOKENS
+   ============================================================ */
+
+:root{
+  --bg: #1C2321;
+  --panel: #262F2C;
+  --panel-raised: #2E3833;
+  --rivet: #4A5551;
+  --line: #3A4440;
+
+  --spark: #E8A33D;
+  --spark-dim: #B8802F;
+  --teal: #7FA99B;
+
+  --text: #F1EDE4;
+  --text-dim: #A9B3AD;
+  --text-faint: #6E7A74;
+
+  --radius: 3px;
+
+  --font-display: "Oswald", "Arial Narrow", sans-serif;
+  --font-body: "Work Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+}
+
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+*{
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
+}
+
+body{
+  margin: 0;
+  position: relative;
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  background: var(--bg);
+
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      rgba(255,255,255,0.012) 0px,
+      rgba(255,255,255,0.012) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+
+  color: var(--text);
+
+  font-family: var(--font-body);
+
+  line-height: 1.5;
+
+  -webkit-font-smoothing: antialiased;
+
+  overflow-x: hidden;
+}
+
+button,
+input{
+  font: inherit;
+}
+
+button,
+a,
+input{
+  -webkit-tap-highlight-color: transparent;
+}
+
+a{
+  color: inherit;
+}
+
+img,
+svg{
+  max-width: 100%;
+}
+
+::selection{
+  background: var(--spark);
+  color: var(--bg);
+}
+
+:focus-visible{
+  outline: 2px solid var(--spark);
+  outline-offset: 2px;
+}
+
+
+/* ============================================================
+   RESPLANDOR DORADO
+   ============================================================ */
+
+.ember-glow{
+  position: fixed;
+
+  top: -10%;
+  right: -10%;
+
+  width: 60vw;
+  height: 60vw;
+
+  max-width: 900px;
+  max-height: 900px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(232,163,61,0.16) 0%,
+      rgba(232,163,61,0.07) 35%,
+      transparent 70%
+    );
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+
+/* ============================================================
+   PARTÍCULAS
+   ============================================================ */
+
+.particles{
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  overflow: hidden;
+
+  z-index: 1;
+}
+
+.particle{
+  position: absolute;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(232,163,61,0.9) 0%,
+      rgba(232,163,61,0.35) 45%,
+      transparent 75%
+    );
+
+  opacity: 0;
+
+  animation-name: particleFloat;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes particleFloat{
+
+  0%{
+    opacity: 0;
+    transform: translateY(0) scale(0.8);
+  }
+
+  15%{
+    opacity: 1;
+  }
+
+  50%{
+    opacity: 0.6;
+  }
+
+  85%{
+    opacity: 0;
+  }
+
+  100%{
+    transform:
+      translateY(-90px)
+      translateX(12px)
+      scale(1.1);
+
+    opacity: 0;
+  }
+
+}
+
+
+/* ============================================================
+   CAPAS
+   ============================================================ */
+
+.site-header,
+main,
+.site-footer{
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ============================================================
+   ANIMACIONES
+   ============================================================ */
+
+@keyframes fadeUp{
+
+  from{
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+@keyframes popIn{
+
+  from{
+    opacity: 0;
+    transform:
+      translateY(10px)
+      scale(0.98);
+  }
+
+  to{
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+@keyframes sectionIn{
+
+  from{
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* ============================================================
+   LOGO
+   ============================================================ */
+
+@keyframes logoGiro{
+
+  from{
+    transform: rotate(0deg);
+  }
+
+  to{
+    transform: rotate(360deg);
+  }
+
+}
+
+.logo-ring{
+
+  transform-box: fill-box;
+
+  transform-origin: center center;
+
+  animation:
+    logoGiro
+    8s
+    linear
+    infinite;
+
+  will-change: transform;
+}
+
+.logo-ring circle[r="3.5"]{
+
+  fill: var(--spark);
+
+  filter:
+    drop-shadow(
+      0 0 3px
+      rgba(232,163,61,0.7)
+    );
+}
+
+.logo-ring circle[r="80"]{
+
+  stroke: var(--spark-dim);
+}
+
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+
+.reveal{
+
+  opacity: 1;
+
+  animation-name: fadeUp;
+
+  animation-duration: 0.6s;
+
+  animation-timing-function: ease;
+
+  animation-fill-mode: forwards;
+}
+
+.reveal-1{
+  animation-delay: 0s;
+}
+
+.reveal-2{
+  animation-delay: 0.08s;
+}
+
+.reveal-3{
+  animation-delay: 0.16s;
+}
+
+.reveal-4{
+  animation-delay: 0.24s;
+}
+
+.reveal-5{
+  animation-delay: 0.32s;
+}
+
+
+/* ============================================================
+   CONTENEDOR
+   ============================================================ */
+
+.wrap{
+
+  width: 100%;
+
+  max-width: 1080px;
+
+  margin: 0 auto;
+
+  padding: 0 24px;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.site-header{
+
+  padding: 40px 0 0;
+
+  border-bottom: 1px solid var(--line);
+}
+
+
+/* ============================================================
+   MARCA
+   ============================================================ */
+
+.brand{
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-bottom: 28px;
+
+  flex-wrap: wrap;
+}
+
+.brand > div:first-child{
+  min-width: 0;
+}
+
+.brand-mark{
+
+  font-family: var(--font-mono);
+
+  font-size: 12px;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+
+  color: var(--spark);
+
+  display: block;
+}
+
+.brand-location{
+
+  font-family: var(--font-mono);
+
+  font-size: 12px;
+
+  letter-spacing: 0.1em;
+
+  color: var(--text-faint);
+
+  display: block;
+
+  margin-top: 4px;
+}
+
+
+/* ============================================================
+   NAVEGACIÓN
+   ============================================================ */
+
+.main-nav{
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  flex-wrap: wrap;
+
+  min-width: 0;
+}
+
+.nav-btn{
+
+  border: 1px solid transparent;
+
+  background: transparent;
+
+  color: var(--text-faint);
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  padding: 8px 10px;
+
+  cursor: pointer;
+
+  border-radius: var(--radius);
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-btn:hover{
+
+  color: var(--text);
+
+  border-color: var(--line);
+
+  background: var(--panel);
+}
+
+.nav-btn.active{
+
+  color: var(--spark);
+
+  border-color: var(--spark-dim);
+
+  background:
+    rgba(232,163,61,0.06);
+}
+
+.nav-btn:active{
+
+  transform: scale(0.96);
+}
+
+
+/* ============================================================
+   SECCIONES / PESTAÑAS
+   ============================================================ */
+
+.page-section{
+
+  display: none;
+
+  width: 100%;
+  min-width: 0;
+
+  animation:
+    sectionIn
+    0.35s
+    ease
+    forwards;
+}
+
+.page-section.active-section{
+
+  display: block;
+}
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.hero{
+
+  padding: 8px 0 44px;
+}
+
+.hero-inner{
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 36px;
+
+  min-width: 0;
+}
+
+.hero-content{
+
+  flex: 1 1 520px;
+
+  min-width: 0;
+}
+
+
+/* ============================================================
+   LOGO HERO
+   ============================================================ */
+
+.hero-logo{
+
+  flex: 0 0 auto;
+
+  width: 280px;
+
+  padding-top: 0;
+
+  transform:
+    translateX(-60px);
+
+  transition:
+    transform 0.3s ease;
+}
+
+.logo-mark{
+
+  width: 100%;
+
+  height: auto;
+
+  display: block;
+}
+
+.hero-logo:hover{
+
+  transform:
+    translateX(-60px)
+    scale(1.04);
+}
+
+
+/* ============================================================
+   TITULO
+   ============================================================ */
+
+.hero h1{
+
+  font-family: var(--font-display);
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  font-size:
+    clamp(
+      34px,
+      6vw,
+      58px
+    );
+
+  line-height: 1.04;
+
+  letter-spacing: 0.005em;
+
+  margin: 0 0 14px;
+
+  max-width: 15ch;
+
+  overflow-wrap: break-word;
+}
+
+.hero h1 .accent{
+
+  color: var(--spark);
+}
+
+
+/* ============================================================
+   DESCRIPCIÓN
+   ============================================================ */
+
+.hero p{
+
+  font-size: 16px;
+
+  color: var(--text-dim);
+
+  max-width: 46ch;
+
+  margin: 0 0 32px;
+}
+
+
+/* ============================================================
+   BUSCADOR
+   ============================================================ */
+
+.search-ticket{
+
+  position: relative;
+
+  width: 100%;
+
+  background: var(--panel);
+
+  border: 1px solid var(--line);
+
+  border-radius: var(--radius);
+
+  padding: 18px 20px 20px;
+}
+
+.search-ticket::before{
+
+  content: "";
+
+  position: absolute;
+
+  top: -1px;
+
+  left: 24px;
+
+  right: 24px;
+
+  height: 1px;
+
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      var(--bg) 0 6px,
+      var(--line) 6px 8px
+    );
+}
+
+.ticket-label{
+
+  font-family: var(--font-mono);
+
+  font-size: 11px;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+
+  color: var(--text-faint);
+
+  display: block;
+
+  margin-bottom: 10px;
+}
+
+
+/* ============================================================
+   BUSCADOR INPUT
+   ============================================================ */
+
+.search-row{
+
+  display: flex;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+  width: 100%;
+}
+
+#buscador{
+
+  flex: 1 1 260px;
+
+  width: 100%;
+  min-width: 0;
+
+  background: var(--bg);
+
+  border: 1px solid var(--line);
+
+  border-radius: var(--radius);
+
+  color: var(--text);
+
+  font-family: var(--font-body);
+
+  font-size: 16px;
+
+  padding: 13px 14px;
+
+  appearance: none;
+}
+
+#buscador::placeholder{
+
+  color: var(--text-faint);
+
+}
+
+#buscador:focus{
+
+  border-color: var(--spark);
+
+  outline: none;
+}
+
+
+/* ============================================================
+   CHIPS
+   ============================================================ */
+
+.chips{
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 16px;
+
+  width: 100%;
+}
+
+.chip{
+
+  font-family: var(--font-mono);
+
+  font-size: 11px;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  background: transparent;
+
+  border: 1px solid var(--line);
+
+  color: var(--text-dim);
+
+  border-radius: 999px;
+
+  padding: 7px 13px;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.1s ease;
+
+  max-width: 100%;
+}
+
+.chip:hover{
+
+  border-color: var(--teal);
+
+  color: var(--text);
+}
+
+.chip:active{
+
+  transform: scale(0.95);
+}
+
+.chip.active{
+
+  border-color: var(--spark);
+
+  color: var(--spark);
+}
+
+
+/* ============================================================
+   RESULTADOS
+   ============================================================ */
+
+.results-bar{
+
+  padding: 28px 0 4px;
+
+  display: flex;
+
+  align-items: baseline;
+
+  justify-content: space-between;
+
+  gap: 12px;
+
+  min-width: 0;
+}
+
+.results-count{
+
+  font-family: var(--font-mono);
+
+  font-size: 12px;
+
+  letter-spacing: 0.08em;
+
+  color: var(--text-faint);
+
+  text-transform: uppercase;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   GRID
+   ============================================================ */
+
+.grid{
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(260px, 1fr)
+    );
+
+  gap: 18px;
+
+  padding: 20px 0 64px;
+
+  width: 100%;
+}
+
+
+/* ============================================================
+   TARJETAS
+   ============================================================ */
+
+.card{
+
+  position: relative;
+
+  min-width: 0;
+
+  background: var(--panel);
+
+  border: 1px solid var(--line);
+
+  border-radius: var(--radius);
+
+  padding: 18px;
+
+  opacity: 1;
+
+  animation:
+    popIn 0.45s ease forwards;
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.card:hover{
+
+  transform: translateY(-3px);
+
+  border-color: var(--rivet);
+
+  box-shadow:
+    0 14px 28px rgba(0,0,0,0.35);
+}
+
+.card:hover .badge{
+
+  box-shadow:
+    0 0 0 3px
+    rgba(232,163,61,0.15);
+}
+
+
+/* ============================================================
+   REMACHES
+   ============================================================ */
+
+.card::before,
+.card::after,
+.card .rivet-l,
+.card .rivet-r{
+
+  content: "";
+
+  position: absolute;
+
+  width: 6px;
+
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--rivet);
+
+  box-shadow:
+    inset 0 1px 1px rgba(0,0,0,0.5),
+    0 1px 0 rgba(255,255,255,0.04);
+}
+
+.card::before{
+
+  top: 9px;
+  left: 9px;
+}
+
+.card::after{
+
+  top: 9px;
+  right: 9px;
+}
+
+.card .rivet-l{
+
+  bottom: 9px;
+  left: 9px;
+}
+
+.card .rivet-r{
+
+  bottom: 9px;
+  right: 9px;
+}
+
+
+/* ============================================================
+   TARJETA SUPERIOR
+   ============================================================ */
+
+.card-top{
+
+  display: flex;
+
+  gap: 14px;
+
+  align-items: center;
+
+  min-width: 0;
+}
+
+.card-photo{
+
+  width: 64px;
+
+  height: 64px;
+
+  border-radius: var(--radius);
+
+  object-fit: cover;
+
+  border: 1px solid var(--line);
+
+  flex-shrink: 0;
+}
+
+.card-id{
+
+  min-width: 0;
+  flex: 1;
+}
+
+.card-empresa{
+
+  font-family: var(--font-display);
+
+  text-transform: uppercase;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.01em;
+
+  margin: 0 0 2px;
+
+  overflow-wrap: break-word;
+}
+
+.card-nombre{
+
+  font-size: 13px;
+
+  color: var(--text-dim);
+
+  margin: 0;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   CATEGORÍA
+   ============================================================ */
+
+.badge{
+
+  display: inline-block;
+
+  max-width: 100%;
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  color: var(--spark);
+
+  border: 1px solid var(--spark-dim);
+
+  border-radius: 999px;
+
+  padding: 4px 10px;
+
+  margin: 14px 0 10px;
+
+  transition:
+    box-shadow 0.18s ease;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   DESCRIPCIÓN
+   ============================================================ */
+
+.card-desc{
+
+  font-size: 14px;
+
+  color: var(--text-dim);
+
+  margin: 0 0 16px;
+
+  line-height: 1.55;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   ACCIONES
+   ============================================================ */
+
+.card-actions{
+
+  display: flex;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+
+  border-top: 1px dashed var(--line);
+
+  padding-top: 12px;
+}
+
+.btn-whatsapp{
+
+  font-family: var(--font-mono);
+
+  font-size: 11px;
+
+  letter-spacing: 0.06em;
+
+  text-transform: uppercase;
+
+  text-decoration: none;
+
+  color: var(--bg);
+
+  background: var(--teal);
+
+  border-radius: var(--radius);
+
+  padding: 8px 12px;
+
+  transition:
+    filter 0.15s ease;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 40px;
+}
+
+.btn-whatsapp:hover{
+
+  filter: brightness(1.1);
+}
+
+.no-phone{
+
+  font-family: var(--font-mono);
+
+  font-size: 11px;
+
+  color: var(--text-faint);
+
+  overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   ESTADO VACÍO
+   ============================================================ */
+
+.empty-state{
+
+  grid-column: 1 / -1;
+
+  text-align: center;
+
+  padding: 60px 20px;
+
+  border: 1px dashed var(--line);
+
+  border-radius: var(--radius);
+}
+
+.empty-state p:first-child{
+
+  font-family: var(--font-display);
+
+  text-transform: uppercase;
+
+  font-size: 22px;
+
+  letter-spacing: 0.02em;
+
+  color: var(--text);
+
+  margin: 0 0 8px;
+}
+
+.empty-state p:last-child{
+
+  color: var(--text-faint);
+
+  font-size: 14px;
+
+  margin: 0;
+}
+
+
+/* ============================================================
+   ENCABEZADO DE SECCIÓN
+   ============================================================ */
+
+.section-heading{
+
+  padding:
+    45px
+    0
+    34px;
+
+  max-width: 720px;
+}
+
+.section-kicker{
+
+  display: inline-block;
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+
+  letter-spacing: 0.16em;
+
+  color: var(--spark);
+
+  border-left:
+    3px solid var(--spark);
+
+  padding-left: 10px;
+
+  margin-bottom: 14px;
+}
+
+.section-heading h2{
+
+  font-family: var(--font-display);
+
+  font-size:
+    clamp(
+      38px,
+      6vw,
+      60px
+    );
+
+  line-height: 0.98;
+
+  text-transform: uppercase;
+
+  margin: 0 0 16px;
+
+  letter-spacing: 0.01em;
+
+  overflow-wrap: break-word;
+}
+
+.section-heading h2 .accent{
+
+  color: var(--spark);
+}
+
+.section-heading p{
+
+  max-width: 60ch;
+
+  color: var(--text-dim);
+
+  margin: 0;
+
+  font-size: 16px;
+}
+
+
+/* ============================================================
+   PLANES
+   ============================================================ */
+
+.plans-grid{
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0,1fr)
+    );
+
+  gap: 18px;
+
+  padding-bottom: 34px;
+}
+
+.plan-card{
+
+  position: relative;
+
+  min-width: 0;
+
+  background: var(--panel);
+
+  border:
+    1px solid var(--line);
+
+  border-radius: var(--radius);
+
+  padding: 28px 22px 22px;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.plan-card::before{
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 2px;
+
+  background:
+    var(--line);
+}
+
+.plan-card:hover{
+
+  transform: translateY(-5px);
+
+  border-color: var(--spark-dim);
+
+  box-shadow:
+    0 18px 35px
+    rgba(0,0,0,0.32);
+}
+
+.plan-card.featured{
+
+  border-color:
+    var(--spark-dim);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(232,163,61,0.08),
+      transparent 45%
+    ),
+    var(--panel);
+}
+
+.plan-card.featured::before{
+
+  background: var(--spark);
+}
+
+.plan-number{
+
+  font-family: var(--font-mono);
+
+  color: var(--text-faint);
+
+  font-size: 11px;
+
+  margin-bottom: 14px;
+}
+
+.plan-label{
+
+  font-family: var(--font-mono);
+
+  color: var(--spark);
+
+  font-size: 10px;
+
+  letter-spacing: 0.14em;
+
+  display: block;
+
+  margin-bottom: 8px;
+}
+
+.plan-card h3{
+
+  font-family: var(--font-display);
+
+  text-transform: uppercase;
+
+  font-size: 28px;
+
+  line-height: 1;
+
+  margin: 0 0 12px;
+
+  overflow-wrap: break-word;
+}
+
+.plan-description{
+
+  color: var(--text-dim);
+
+  font-size: 14px;
+
+  min-height: 66px;
+
+  margin: 0 0 20px;
+}
+
+.plan-price{
+
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 7px;
+
+  padding:
+    14px 0;
+
+  border-top:
+    1px dashed var(--line);
+
+  border-bottom:
+    1px dashed var(--line);
+
+  margin-bottom: 18px;
+
+  flex-wrap: wrap;
+}
+
+.plan-price span{
+
+  font-family: var(--font-display);
+
+  color: var(--spark);
+
+  font-size: 25px;
+
+  text-transform: uppercase;
+}
+
+.plan-price small{
+
+  font-family: var(--font-mono);
+
+  color: var(--text-faint);
+
+  font-size: 9px;
+
+  text-transform: uppercase;
+}
+
+.plan-features{
+
+  list-style: none;
+
+  padding: 0;
+
+  margin: 0 0 22px;
+}
+
+.plan-features li{
+
+  display: flex;
+
+  gap: 9px;
+
+  color: var(--text-dim);
+
+  font-size: 13px;
+
+  padding: 7px 0;
+
+  border-bottom:
+    1px solid
+    rgba(58,68,64,0.5);
+}
+
+.plan-features li:last-child{
+
+  border-bottom: none;
+}
+
+.plan-features li span{
+
+  color: var(--spark);
+
+  font-family: var(--font-mono);
+
+  font-weight: 600;
+
+  flex-shrink: 0;
+}
+
+.plan-button{
+
+  width: 100%;
+
+  min-height: 44px;
+
+  border: 1px solid var(--spark-dim);
+
+  background: transparent;
+
+  color: var(--spark);
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  padding: 12px;
+
+  cursor: pointer;
+
+  border-radius: var(--radius);
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.plan-button:hover{
+
+  background: var(--spark);
+
+  color: var(--bg);
+}
+
+.plan-button:active{
+
+  transform: scale(0.98);
+}
+
+.popular-label{
+
+  position: absolute;
+
+  top: 13px;
+
+  right: -28px;
+
+  transform: rotate(45deg);
+
+  width: 120px;
+
+  text-align: center;
+
+  background: var(--spark);
+
+  color: var(--bg);
+
+  font-family: var(--font-mono);
+
+  font-size: 8px;
+
+  letter-spacing: 0.08em;
+
+  padding: 4px 0;
+
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   AYUDA PLANES
+   ============================================================ */
+
+.plans-help{
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 24px;
+
+  background: var(--panel);
+
+  border:
+    1px solid var(--line);
+
+  padding: 24px;
+
+  margin-bottom: 70px;
+
+  min-width: 0;
+}
+
+.help-kicker{
+
+  font-family: var(--font-mono);
+
+  color: var(--spark);
+
+  font-size: 9px;
+
+  letter-spacing: 0.14em;
+}
+
+.plans-help h3{
+
+  font-family: var(--font-display);
+
+  text-transform: uppercase;
+
+  font-size: 25px;
+
+  margin: 4px 0;
+
+  overflow-wrap: break-word;
+}
+
+.plans-help p{
+
+  color: var(--text-dim);
+
+  font-size: 13px;
+
+  margin: 0;
+}
+
+.whatsapp-main-button{
+
+  flex-shrink: 0;
+
+  border: 1px solid var(--teal);
+
+  background: var(--teal);
+
+  color: var(--bg);
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+
+  padding: 12px 16px;
+
+  cursor: pointer;
+
+  border-radius: var(--radius);
+
+  transition:
+    filter 0.2s ease,
+    transform 0.15s ease;
+
+  min-height: 44px;
+}
+
+.whatsapp-main-button:hover{
+
+  filter: brightness(1.1);
+
+  transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   SOBRE NOSOTROS
+   ============================================================ */
+
+.about-layout{
+
+  display: grid;
+
+  grid-template-columns:
+    1.15fr
+    0.85fr;
+
+  gap: 22px;
+
+  padding-bottom: 24px;
+}
+
+.about-main{
+
+  position: relative;
+
+  background: var(--panel);
+
+  border: 1px solid var(--line);
+
+  padding: 34px;
+
+  min-height: 360px;
+
+  min-width: 0;
+}
+
+.about-main::before{
+
+  content: "";
+
+  position: absolute;
+
+  top: 12px;
+  left: 12px;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--rivet);
+}
+
+.about-main::after{
+
+  content: "";
+
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--rivet);
+}
+
+.about-mark{
+
+  display: block;
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+
+  line-height: 1.3;
+
+  letter-spacing: 0.12em;
+
+  color: var(--spark);
+
+  margin-bottom: 28px;
+}
+
+.about-main h3{
+
+  font-family: var(--font-display);
+
+  font-size:
+    clamp(
+      32px,
+      4vw,
+      46px
+    );
+
+  text-transform: uppercase;
+
+  line-height: 1;
+
+  margin: 0 0 22px;
+
+  max-width: 15ch;
+
+  overflow-wrap: break-word;
+}
+
+.about-main p{
+
+  color: var(--text-dim);
+
+  font-size: 14px;
+
+  max-width: 62ch;
+}
+
+.about-points{
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+
+  min-width: 0;
+}
+
+.about-point{
+
+  display: flex;
+
+  gap: 16px;
+
+  background: var(--panel);
+
+  border: 1px solid var(--line);
+
+  padding: 20px;
+
+  flex: 1;
+
+  min-width: 0;
+}
+
+.point-number{
+
+  font-family: var(--font-mono);
+
+  color: var(--spark);
+
+  font-size: 11px;
+
+  flex-shrink: 0;
+}
+
+.about-point h4{
+
+  font-family: var(--font-display);
+
+  text-transform: uppercase;
+
+  font-size: 20px;
+
+  margin: 0 0 5px;
+
+  overflow-wrap: break-word;
+}
+
+.about-point p{
+
+  color: var(--text-dim);
+
+  font-size: 13px;
+
+  margin: 0;
+}
+
+.about-mission{
+
+  display: grid;
+
+  grid-template-columns:
+    180px
+    1fr;
+
+  gap: 20px;
+
+  align-items: center;
+
+  border-top:
+    1px dashed var(--line);
+
+  border-bottom:
+    1px dashed var(--line);
+
+  padding: 25px 0;
+
+  margin-bottom: 70px;
+}
+
+.about-mission span{
+
+  font-family: var(--font-mono);
+
+  color: var(--spark);
+
+  font-size: 10px;
+
+  letter-spacing: 0.12em;
+}
+
+.about-mission p{
+
+  margin: 0;
+
+  font-family: var(--font-display);
+
+  text-transform: uppercase;
+
+  font-size: 21px;
+
+  line-height: 1.2;
+
+  overflow-wrap: break-word;
+}
+
+
+/* ============================================================
+   BENEFICIOS
+   ============================================================ */
+
+.benefits-grid{
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0,1fr)
+    );
+
+  gap: 18px;
+
+  padding-bottom: 28px;
+}
+
+.benefit-card{
+
+  background: var(--panel);
+
+  border: 1px solid var(--line);
+
+  padding: 28px;
+
+  position: relative;
+
+  min-width: 0;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.benefit-card:hover{
+
+  transform: translateY(-4px);
+
+  border-color: var(--spark-dim);
+
+  background: var(--panel-raised);
+}
+
+.benefit-icon{
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 42px;
+
+  height: 42px;
+
+  border: 1px solid var(--spark-dim);
+
+  color: var(--spark);
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+
+  margin-bottom: 24px;
+}
+
+.benefit-card h3{
+
+  font-family: var(--font-display);
+
+  text-transform: uppercase;
+
+  font-size: 29px;
+
+  margin: 0 0 9px;
+
+  overflow-wrap: break-word;
+}
+
+.benefit-card p{
+
+  color: var(--text-dim);
+
+  font-size: 14px;
+
+  margin: 0;
+
+  max-width: 50ch;
+}
+
+.benefits-cta{
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 25px;
+
+  padding: 28px;
+
+  margin-bottom: 70px;
+
+  background:
+    linear-gradient(
+      100deg,
+      rgba(232,163,61,0.10),
+      transparent
+    );
+
+  border: 1px solid var(--spark-dim);
+
+  min-width: 0;
+}
+
+.benefits-cta span{
+
+  font-family: var(--font-mono);
+
+  font-size: 9px;
+
+  letter-spacing: 0.15em;
+
+  color: var(--spark);
+}
+
+.benefits-cta h3{
+
+  font-family: var(--font-display);
+
+  text-transform: uppercase;
+
+  font-size: 28px;
+
+  margin: 5px 0 0;
+
+  overflow-wrap: break-word;
+}
+
+.cta-button{
+
+  flex-shrink: 0;
+
+  background: var(--spark);
+
+  color: var(--bg);
+
+  text-decoration: none;
+
+  font-family: var(--font-mono);
+
+  text-transform: uppercase;
+
+  font-size: 10px;
+
+  letter-spacing: 0.08em;
+
+  padding: 13px 17px;
+
+  border-radius: var(--radius);
+
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+
+  min-height: 44px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.cta-button:hover{
+
+  transform: translateY(-2px);
+
+  filter: brightness(1.08);
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.site-footer{
+
+  border-top: 1px solid var(--line);
+
+  padding: 24px 0 40px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  font-family: var(--font-mono);
+
+  font-size: 11px;
+
+  color: var(--text-faint);
+
+  letter-spacing: 0.05em;
+}
+
+.site-footer a{
+
+  color: var(--text-faint);
+
+  text-decoration: none;
+
+  border-bottom: 1px dotted var(--text-faint);
+}
+
+.site-footer a:hover{
+
+  color: var(--spark);
+
+  border-color: var(--spark);
+}
+
+
+/* ============================================================
+   RESPONSIVE — TABLETS
+   ============================================================ */
+
+@media (max-width: 900px){
+
+  .plans-grid{
+
+    grid-template-columns: 1fr;
+  }
+
+  .plan-description{
+
+    min-height: auto;
+  }
+
+  .about-layout{
+
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ============================================================
+   RESPONSIVE — TABLETS PEQUEÑAS / CELULARES
+   ============================================================ */
+
+@media (max-width: 780px){
+
+  .site-header{
+
+    padding-top: 25px;
+  }
+
+  .wrap{
+
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .brand{
+
+    align-items: flex-start;
+
+    gap: 16px;
+
+    padding-bottom: 20px;
+  }
+
+  .brand-mark{
+
+    font-size: 11px;
+
+    letter-spacing: 0.14em;
+  }
+
+  .brand-location{
+
+    font-size: 10px;
+
+    letter-spacing: 0.08em;
+  }
+
+  /* ----------------------------------------------------------
+     NAVEGACIÓN
+     ---------------------------------------------------------- */
+
+  .main-nav{
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    padding-bottom: 5px;
+
+    scrollbar-width: none;
+
+    flex-wrap: nowrap;
+
+    gap: 5px;
+
+    scroll-behavior: smooth;
+  }
+
+  .main-nav::-webkit-scrollbar{
+
+    display: none;
+  }
+
+  .nav-btn{
+
+    flex: 0 0 auto;
+
+    min-height: 42px;
+
+    padding:
+      9px 12px;
+  }
+
+  /* ----------------------------------------------------------
+     HERO
+     ---------------------------------------------------------- */
+
+  .hero{
+
+    padding: 10px 0 36px;
+  }
+
+  .hero-inner{
+
+    flex-direction: column-reverse;
+
+    align-items: center;
+
+    gap: 20px;
+
+    text-align: left;
+  }
+
+  .hero-logo{
+
+    width: 145px;
+
+    align-self: center;
+
+    margin: 0 auto;
+
+    padding: 0;
+
+    transform: none;
+  }
+
+  .hero-logo:hover{
+
+    transform: scale(1.04);
+  }
+
+  .hero-content{
+
+    width: 100%;
+
+    flex-basis: auto;
+  }
+
+  .hero h1{
+
+    max-width: 100%;
+
+    font-size:
+      clamp(
+        34px,
+        9vw,
+        48px
+      );
+  }
+
+  .hero p{
+
+    font-size: 15px;
+
+    margin-bottom: 24px;
+  }
+
+  .ember-glow{
+
+    width: 90vw;
+
+    height: 90vw;
+
+    max-width: 600px;
+
+    max-height: 600px;
+  }
+
+  /* ----------------------------------------------------------
+     BUSCADOR
+     ---------------------------------------------------------- */
+
+  .search-ticket{
+
+    padding:
+      16px
+      14px
+      17px;
+  }
+
+  .search-ticket::before{
+
+    left: 16px;
+
+    right: 16px;
+  }
+
+  #buscador{
+
+    flex-basis: 100%;
+
+    width: 100%;
+
+    min-height: 48px;
+
+    font-size: 16px;
+  }
+
+  .chips{
+
+    gap: 6px;
+  }
+
+  .chip{
+
+    padding:
+      8px 11px;
+
+    min-height: 36px;
+  }
+
+  /* ----------------------------------------------------------
+     RESULTADOS
+     ---------------------------------------------------------- */
+
+  .results-bar{
+
+    padding-top: 22px;
+  }
+
+  /* ----------------------------------------------------------
+     TARJETAS
+     ---------------------------------------------------------- */
+
+  .grid{
+
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+
+    padding-bottom: 45px;
+  }
+
+  .card{
+
+    padding: 17px;
+  }
+
+  .card-actions{
+
+    width: 100%;
+  }
+
+  .btn-whatsapp{
+
+    min-height: 42px;
+  }
+
+  /* ----------------------------------------------------------
+     SECCIONES
+     ---------------------------------------------------------- */
+
+  .section-heading{
+
+    padding:
+      35px
+      0
+      28px;
+  }
+
+  .section-heading h2{
+
+    font-size:
+      clamp(
+        36px,
+        10vw,
+        52px
+      );
+  }
+
+  .section-heading p{
+
+    font-size: 15px;
+  }
+
+  /* ----------------------------------------------------------
+     PLANES
+     ---------------------------------------------------------- */
+
+  .plans-grid{
+
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .plan-description{
+
+    min-height: auto;
+  }
+
+  .plan-card{
+
+    padding:
+      26px
+      20px
+      20px;
+  }
+
+  .plan-card h3{
+
+    font-size: 27px;
+  }
+
+  .plans-help{
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 18px;
+
+    padding: 20px;
+
+    margin-bottom: 45px;
+  }
+
+  .plans-help h3{
+
+    font-size: 23px;
+  }
+
+  .whatsapp-main-button{
+
+    width: 100%;
+
+    min-height: 46px;
+  }
+
+  /* ----------------------------------------------------------
+     NOSOTROS
+     ---------------------------------------------------------- */
+
+  .about-layout{
+
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .about-main{
+
+    padding: 28px 22px;
+
+    min-height: auto;
+  }
+
+  .about-main h3{
+
+    max-width: 100%;
+
+    font-size:
+      clamp(
+        32px,
+        9vw,
+        44px
+      );
+  }
+
+  .about-point{
+
+    padding: 18px;
+
+    gap: 13px;
+  }
+
+  .about-mission{
+
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+
+    padding:
+      22px
+      0;
+
+    margin-bottom: 45px;
+  }
+
+  .about-mission p{
+
+    font-size: 20px;
+  }
+
+  /* ----------------------------------------------------------
+     BENEFICIOS
+     ---------------------------------------------------------- */
+
+  .benefits-grid{
+
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .benefit-card{
+
+    padding: 24px 20px;
+  }
+
+  .benefit-card h3{
+
+    font-size: 27px;
+  }
+
+  .benefits-cta{
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 18px;
+
+    padding: 22px;
+
+    margin-bottom: 45px;
+  }
+
+  .benefits-cta h3{
+
+    font-size: 25px;
+  }
+
+  .cta-button{
+
+    width: 100%;
+
+    text-align: center;
+
+    min-height: 46px;
+  }
+
+  /* ----------------------------------------------------------
+     FOOTER
+     ---------------------------------------------------------- */
+
+  .site-footer{
+
+    padding-bottom: 28px;
+
+    line-height: 1.6;
+  }
+
+}
+
+
+/* ============================================================
+   RESPONSIVE — CELULARES
+   ============================================================ */
+
+@media (max-width: 600px){
+
+  .wrap{
+
+    padding-left: 16px;
+
+    padding-right: 16px;
+  }
+
+  .site-header{
+
+    padding-top: 20px;
+  }
+
+  .brand{
+
+    gap: 13px;
+  }
+
+  .brand-mark{
+
+    font-size: 10px;
+  }
+
+  .brand-location{
+
+    font-size: 9px;
+  }
+
+  .nav-btn{
+
+    font-size: 9px;
+
+    letter-spacing: 0.08em;
+
+    padding:
+      9px 11px;
+  }
+
+  .hero-logo{
+
+    width: 125px;
+  }
+
+  .hero h1{
+
+    font-size:
+      clamp(
+        32px,
+        10vw,
+        42px
+      );
+
+    line-height: 1.02;
+  }
+
+  .hero p{
+
+    font-size: 14px;
+
+    line-height: 1.55;
+  }
+
+  .search-ticket{
+
+    padding:
+      15px
+      13px
+      16px;
+  }
+
+  .ticket-label{
+
+    font-size: 10px;
+  }
+
+  .chips{
+
+    margin-top: 13px;
+  }
+
+  .chip{
+
+    font-size: 9px;
+
+    padding:
+      7px
+      10px;
+  }
+
+  .card-top{
+
+    gap: 12px;
+  }
+
+  .card-photo{
+
+    width: 58px;
+
+    height: 58px;
+  }
+
+  .card-empresa{
+
+    font-size: 17px;
+  }
+
+  .card-nombre{
+
+    font-size: 12px;
+  }
+
+  .card-desc{
+
+    font-size: 13px;
+  }
+
+  .btn-whatsapp{
+
+    width: 100%;
+
+    font-size: 10px;
+  }
+
+  .empty-state{
+
+    padding:
+      45px
+      15px;
+  }
+
+  .empty-state p:first-child{
+
+    font-size: 20px;
+  }
+
+  .section-heading{
+
+    padding-top: 30px;
+  }
+
+  .section-heading h2{
+
+    font-size:
+      clamp(
+        34px,
+        11vw,
+        46px
+      );
+  }
+
+  .section-heading p{
+
+    font-size: 14px;
+  }
+
+  .plan-card{
+
+    padding:
+      25px
+      18px
+      18px;
+  }
+
+  .plan-label{
+
+    font-size: 9px;
+  }
+
+  .plan-card h3{
+
+    font-size: 25px;
+  }
+
+  .plan-price span{
+
+    font-size: 23px;
+  }
+
+  .plan-features li{
+
+    font-size: 12px;
+  }
+
+  .about-main{
+
+    padding:
+      25px
+      20px;
+  }
+
+  .about-mark{
+
+    margin-bottom: 22px;
+  }
+
+  .about-point{
+
+    padding:
+      17px
+      16px;
+  }
+
+  .about-point h4{
+
+    font-size: 19px;
+  }
+
+  .about-point p{
+
+    font-size: 12px;
+  }
+
+  .about-mission p{
+
+    font-size: 18px;
+  }
+
+  .benefit-card{
+
+    padding:
+      22px
+      20px;
+  }
+
+  .benefit-icon{
+
+    margin-bottom: 19px;
+  }
+
+  .benefit-card h3{
+
+    font-size: 25px;
+  }
+
+  .benefit-card p{
+
+    font-size: 13px;
+  }
+
+  .benefits-cta{
+
+    padding:
+      21px
+      18px;
+  }
+
+  .benefits-cta h3{
+
+    font-size: 23px;
+  }
+
+  .site-footer{
+
+    font-size: 10px;
+  }
+
+}
+
+
+/* ============================================================
+   RESPONSIVE — CELULARES PEQUEÑOS
+   ============================================================ */
+
+@media (max-width: 420px){
+
+  .wrap{
+
+    padding-left: 13px;
+
+    padding-right: 13px;
+  }
+
+  .site-header{
+
+    padding-top: 18px;
+  }
+
+  .brand{
+
+    padding-bottom: 16px;
+  }
+
+  .brand-mark{
+
+    font-size: 9px;
+
+    letter-spacing: 0.11em;
+  }
+
+  .brand-location{
+
+    font-size: 8px;
+  }
+
+  .main-nav{
+
+    gap: 4px;
+  }
+
+  .nav-btn{
+
+    font-size: 8px;
+
+    padding:
+      8px 9px;
+
+    min-height: 40px;
+  }
+
+  .hero{
+
+    padding:
+      8px
+      0
+      30px;
+  }
+
+  .hero-inner{
+
+    gap: 16px;
+  }
+
+  .hero-logo{
+
+    width: 112px;
+  }
+
+  .hero h1{
+
+    font-size:
+      clamp(
+        29px,
+        10.5vw,
+        38px
+      );
+
+    letter-spacing: 0;
+  }
+
+  .hero p{
+
+    font-size: 13px;
+
+    margin-bottom: 21px;
+  }
+
+  .search-ticket{
+
+    padding:
+      14px
+      11px
+      14px;
+  }
+
+  .search-ticket::before{
+
+    left: 12px;
+
+    right: 12px;
+  }
+
+  #buscador{
+
+    min-height: 46px;
+
+    padding:
+      11px
+      12px;
+  }
+
+  .chips{
+
+    gap: 5px;
+  }
+
+  .chip{
+
+    font-size: 8px;
+
+    padding:
+      7px
+      9px;
+
+    min-height: 34px;
+  }
+
+  .results-bar{
+
+    padding:
+      19px
+      0
+      2px;
+  }
+
+  .results-count{
+
+    font-size: 10px;
+  }
+
+  .grid{
+
+    gap: 12px;
+
+    padding-top: 15px;
+  }
+
+  .card{
+
+    padding: 15px;
+  }
+
+  .card-top{
+
+    align-items: flex-start;
+
+    gap: 10px;
+  }
+
+  .card-photo{
+
+    width: 54px;
+
+    height: 54px;
+  }
+
+  .card-empresa{
+
+    font-size: 16px;
+  }
+
+  .badge{
+
+    font-size: 8px;
+
+    padding:
+      4px
+      8px;
+  }
+
+  .card-desc{
+
+    font-size: 12px;
+
+    line-height: 1.5;
+  }
+
+  .section-heading{
+
+    padding:
+      28px
+      0
+      24px;
+  }
+
+  .section-heading h2{
+
+    font-size:
+      clamp(
+        31px,
+        10.5vw,
+        40px
+      );
+  }
+
+  .section-heading p{
+
+    font-size: 13px;
+  }
+
+  .plan-card{
+
+    padding:
+      23px
+      16px
+      17px;
+  }
+
+  .plan-number{
+
+    margin-bottom: 11px;
+  }
+
+  .plan-card h3{
+
+    font-size: 23px;
+  }
+
+  .plan-description{
+
+    font-size: 13px;
+  }
+
+  .plan-price{
+
+    gap: 5px;
+  }
+
+  .plan-price span{
+
+    font-size: 21px;
+  }
+
+  .plan-features li{
+
+    font-size: 11px;
+
+    gap: 7px;
+  }
+
+  .popular-label{
+
+    font-size: 7px;
+  }
+
+  .plans-help{
+
+    padding:
+      18px
+      15px;
+  }
+
+  .plans-help h3{
+
+    font-size: 21px;
+  }
+
+  .plans-help p{
+
+    font-size: 12px;
+  }
+
+  .about-main{
+
+    padding:
+      23px
+      18px;
+  }
+
+  .about-main h3{
+
+    font-size:
+      clamp(
+        29px,
+        9.5vw,
+        38px
+      );
+  }
+
+  .about-main p{
+
+    font-size: 13px;
+  }
+
+  .about-point{
+
+    padding:
+      16px
+      14px;
+
+    gap: 10px;
+  }
+
+  .about-point h4{
+
+    font-size: 18px;
+  }
+
+  .about-point p{
+
+    font-size: 11px;
+  }
+
+  .about-mission{
+
+    gap: 9px;
+
+    padding:
+      20px
+      0;
+  }
+
+  .about-mission p{
+
+    font-size: 17px;
+  }
+
+  .benefit-card{
+
+    padding:
+      20px
+      17px;
+  }
+
+  .benefit-card h3{
+
+    font-size: 23px;
+  }
+
+  .benefit-card p{
+
+    font-size: 12px;
+
+    line-height: 1.55;
+  }
+
+  .benefits-cta{
+
+    padding:
+      19px
+      16px;
+  }
+
+  .benefits-cta h3{
+
+    font-size: 21px;
+  }
+
+  .site-footer{
+
+    padding:
+      20px
+      0
+      25px;
+
+    font-size: 9px;
+  }
+
+}
+
+
+/* ============================================================
+   RESPONSIVE — TELÉFONOS MUY PEQUEÑOS
+   ============================================================ */
+
+@media (max-width: 360px){
+
+  .wrap{
+
+    padding-left: 11px;
+
+    padding-right: 11px;
+  }
+
+  .brand-mark{
+
+    font-size: 8px;
+  }
+
+  .brand-location{
+
+    font-size: 7px;
+  }
+
+  .nav-btn{
+
+    font-size: 7px;
+
+    padding:
+      8px 8px;
+  }
+
+  .hero-logo{
+
+    width: 100px;
+  }
+
+  .hero h1{
+
+    font-size: 28px;
+  }
+
+  .hero p{
+
+    font-size: 12px;
+  }
+
+  .search-ticket{
+
+    padding:
+      13px
+      10px;
+  }
+
+  .chip{
+
+    font-size: 7px;
+
+    padding:
+      6px
+      8px;
+  }
+
+  .card{
+
+    padding: 14px;
+  }
+
+  .card-photo{
+
+    width: 50px;
+
+    height: 50px;
+  }
+
+  .card-empresa{
+
+    font-size: 15px;
+  }
+
+  .section-heading h2{
+
+    font-size: 29px;
+  }
+
+  .plan-card h3{
+
+    font-size: 21px;
+  }
+
+  .about-main h3{
+
+    font-size: 28px;
+  }
+
+  .benefit-card h3{
+
+    font-size: 21px;
+  }
+
+}
+
+
+/* ============================================================
+   DISPOSITIVOS TÁCTILES
+   ============================================================ */
+
+@media (hover: none) and (pointer: coarse){
+
+  .nav-btn,
+  .chip,
+  .plan-button,
+  .whatsapp-main-button,
+  .cta-button,
+  .btn-whatsapp{
+
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .card:hover,
+  .plan-card:hover,
+  .benefit-card:hover,
+  .benefits-cta:hover{
+
+    transform: none;
+  }
+
+}
+
+
+/* ============================================================
+   REDUCIR ANIMACIONES SI EL USUARIO LO PREFIERE
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce){
+
+  html{
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after{
+
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
+
+}
+
+
+/* ============================================================
+   FIN
+   ============================================================ */
+  }
+
+  .benefit-card{
+
+    padding: 22px;
+  }
+
+}
+
+
+/* ============================================================
+   FIN
+   ============================================================ */
