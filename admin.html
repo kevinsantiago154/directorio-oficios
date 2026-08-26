@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inscribir oficio · Directorio Ibagué</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .admin-wrap{ max-width: 720px; margin: 0 auto; padding: 40px 24px 80px; }
+  .admin-note{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-faint);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+  .admin-note b{ color: var(--teal); }
+  form{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px;
+    display: grid;
+    gap: 16px;
+  }
+  label{
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  input, textarea{
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    padding: 11px 12px;
+  }
+  input:focus, textarea:focus{ outline: none; border-color: var(--spark); }
+  textarea{ resize: vertical; min-height: 80px; }
+  .fila-doble{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  button.generar{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--spark);
+    color: var(--bg);
+    border: none;
+    border-radius: var(--radius);
+    padding: 13px 18px;
+    cursor: pointer;
+    font-weight: 600;
+    justify-self: start;
+  }
+  button.generar:hover{ filter: brightness(1.08); }
+
+  #resultado{ margin-top: 28px; display: none; }
+  #resultado h2{
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: 18px;
+    margin: 0 0 10px;
+  }
+  #codigo{
+    width: 100%;
+    background: #14181A;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--teal);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    padding: 16px;
+    min-height: 220px;
+    white-space: pre;
+    overflow-x: auto;
+  }
+  .btn-copiar{
+    margin-top: 10px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid var(--teal);
+    color: var(--teal);
+    border-radius: var(--radius);
+    padding: 9px 14px;
+    cursor: pointer;
+  }
+  .btn-copiar:hover{ background: var(--teal); color: var(--bg); }
+  .volver{
+    display: inline-block;
+    margin-bottom: 20px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-faint);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--text-faint);
+  }
+</style>
+</head>
+<body>
+
+<div class="admin-wrap">
+  <a class="volver" href="index.html">&larr; Volver al directorio</a>
+
+  <h1 style="font-family:var(--font-display); text-transform:uppercase; font-size:28px; margin:0 0 6px;">Inscribir un oficio</h1>
+  <p style="color:var(--text-dim); margin:0 0 20px;">Llena los datos, genera el código y pégalo en <code>js/data.js</code>.</p>
+
+  <div class="admin-note">
+    <b>Antes de empezar:</b> guarda la foto de la empresa dentro de la carpeta <b>images/</b>
+    del proyecto (ideal cuadrada, formato .jpg o .png). Este formulario no sube la foto por ti,
+    solo genera el texto que necesitas pegar en <b>data.js</b>.
+  </div>
+
+  <form id="form-oficio">
+    <div class="fila-doble">
+      <div>
+        <label for="nombre">Nombre de la persona</label>
+        <input type="text" id="nombre" required placeholder="Ej: Juan Pérez">
+      </div>
+      <div>
+        <label for="empresa">Nombre de la empresa</label>
+        <input type="text" id="empresa" required placeholder="Ej: Soldaduras JP">
+      </div>
+    </div>
+
+    <div class="fila-doble">
+      <div>
+        <label for="categoria">Categoría / oficio</label>
+        <input type="text" id="categoria" required placeholder="Ej: Soldador">
+      </div>
+      <div>
+        <label for="telefono">Teléfono / WhatsApp (opcional)</label>
+        <input type="text" id="telefono" placeholder="Ej: 3001234567">
+      </div>
+    </div>
+
+    <div>
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" required placeholder="Qué hace, experiencia, especialidad..."></textarea>
+    </div>
+
+    <div>
+      <label for="foto">Nombre del archivo de foto (dentro de images/)</label>
+      <input type="text" id="foto" required placeholder="Ej: juan-perez.jpg">
+    </div>
+
+    <div>
+      <label for="id-sugerido">ID (se sugiere solo, puedes cambiarlo si lo necesitas)</label>
+      <input type="number" id="id-sugerido">
+    </div>
+
+    <button type="submit" class="generar">Generar código</button>
+  </form>
+
+  <div id="resultado">
+    <h2>Copia este bloque y pégalo en js/data.js</h2>
+    <div id="codigo"></div>
+    <button class="btn-copiar" id="btn-copiar" type="button">Copiar código</button>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

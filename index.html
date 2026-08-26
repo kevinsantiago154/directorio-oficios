@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Directorio de Oficios · Ibagué</title>
+
+<meta
+  name="description"
+  content="Encuentra soldadores, carpinteros, plomeros y otros oficios en Ibagué."
+>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+  rel="stylesheet"
+>
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- ============================================================
+     RESPLANDOR AMBIENTAL
+     ============================================================ -->
+
+<div class="ember-glow" aria-hidden="true"></div>
+
+<!-- ============================================================
+     PARTÍCULAS
+     ============================================================ -->
+
+<div
+  class="particles"
+  id="particles"
+  aria-hidden="true">
+</div>
+
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+
+<header class="site-header">
+
+  <div class="wrap">
+
+    <!-- MARCA -->
+
+    <div class="brand reveal reveal-1">
+
+      <div>
+        <span class="brand-mark">
+          Directorio de Oficios
+        </span>
+
+        <span class="brand-location">
+          Ibagué · Tolima
+        </span>
+      </div>
+
+      <!-- ======================================================
+           NAVEGACIÓN
+           ====================================================== -->
+
+      <nav class="main-nav" aria-label="Navegación principal">
+
+        <button
+          class="nav-btn active"
+          type="button"
+          data-section="directorio">
+          Directorio
+        </button>
+
+        <button
+          class="nav-btn"
+          type="button"
+          data-section="planes">
+          Planes
+        </button>
+
+        <button
+          class="nav-btn"
+          type="button"
+          data-section="nosotros">
+          Nosotros
+        </button>
+
+        <button
+          class="nav-btn"
+          type="button"
+          data-section="beneficios">
+          Beneficios
+        </button>
+
+      </nav>
+
+    </div>
+
+
+    <!-- ========================================================
+         CONTENIDO PRINCIPAL
+         ======================================================== -->
+
+    <div class="page-sections">
+
+
+      <!-- ======================================================
+           PESTAÑA: DIRECTORIO
+           ====================================================== -->
+
+      <section
+        id="directorio"
+        class="page-section active-section"
+      >
+
+        <div class="hero">
+
+          <div class="hero-inner">
+
+            <div class="hero-content">
+
+              <h1 class="reveal reveal-2">
+                Encuentra el
+                <span class="accent">
+                  oficio
+                </span>
+                que necesitas, aquí en Soluciones América
+              </h1>
+
+              <p class="reveal reveal-3">
+                Soldadores, carpinteros, plomeros, técnicos y más.
+                Busca por nombre, por empresa o por lo que necesites
+                que hagan.
+              </p>
+
+
+              <!-- BUSCADOR -->
+
+              <div class="search-ticket reveal reveal-4">
+
+                <span class="ticket-label">
+                  Orden de búsqueda
+                </span>
+
+                <div class="search-row">
+
+                  <input
+                    type="text"
+                    id="buscador"
+                    placeholder="Ej: soldador, carpintero, Juan Pérez..."
+                    autocomplete="off"
+                  >
+
+                </div>
+
+                <div
+                  class="chips"
+                  id="chips">
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- LOGO -->
+
+            <div
+              class="hero-logo reveal reveal-5"
+              aria-hidden="true"
+            >
+
+              <svg
+                class="logo-mark"
+                viewBox="0 0 200 200"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+
+                <g
+                  class="logo-ring"
+                  style="
+                    transform-box: fill-box;
+                    transform-origin: center;
+                  "
+                >
+
+                  <circle
+                    cx="100"
+                    cy="100"
+                    r="92"
+                    fill="none"
+                    stroke="var(--line)"
+                    stroke-width="1"
+                    stroke-dasharray="3 6"
+                  />
+
+                  <circle
+                    cx="100"
+                    cy="100"
+                    r="80"
+                    fill="none"
+                    stroke="var(--spark-dim)"
+                    stroke-width="1.5"
+                  />
+
+                  <circle
+                    cx="100"
+                    cy="20"
+                    r="3.5"
+                    fill="var(--spark)"
+                    filter="drop-shadow(0 0 3px rgba(232,163,61,0.7))"
+                  />
+
+                  <circle
+                    cx="100"
+                    cy="180"
+                    r="3.5"
+                    fill="var(--spark)"
+                    filter="drop-shadow(0 0 3px rgba(232,163,61,0.7))"
+                  />
+
+                  <circle
+                    cx="20"
+                    cy="100"
+                    r="3.5"
+                    fill="var(--spark)"
+                    filter="drop-shadow(0 0 3px rgba(232,163,61,0.7))"
+                  />
+
+                  <circle
+                    cx="180"
+                    cy="100"
+                    r="3.5"
+                    fill="var(--spark)"
+                    filter="drop-shadow(0 0 3px rgba(232,163,61,0.7))"
+                  />
+
+                </g>
+
+
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="72"
+                  fill="var(--panel)"
+                  stroke="var(--spark-dim)"
+                  stroke-width="1"
+                />
+
+
+                <text
+                  x="100"
+                  y="76"
+                  text-anchor="middle"
+                  font-family="var(--font-mono)"
+                  font-size="8.5"
+                  letter-spacing="2.5"
+                  fill="var(--text-faint)"
+                >
+                  DIRECTORIO
+                </text>
+
+
+                <text
+                  x="100"
+                  y="108"
+                  text-anchor="middle"
+                  font-family="var(--font-display)"
+                  font-weight="700"
+                  font-size="22"
+                  letter-spacing="1"
+                  fill="var(--spark)"
+                >
+                  SOLUCIONES
+                </text>
+
+
+                <text
+                  x="100"
+                  y="132"
+                  text-anchor="middle"
+                  font-family="var(--font-display)"
+                  font-weight="700"
+                  font-size="17"
+                  letter-spacing="1.5"
+                  fill="var(--spark)"
+                >
+                  AMÉRICA
+                </text>
+
+              </svg>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- RESULTADOS -->
+
+        <div class="results-bar">
+
+          <span
+            class="results-count"
+            id="contador">
+          </span>
+
+        </div>
+
+
+        <!-- TARJETAS -->
+
+        <div
+          class="grid"
+          id="grid">
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================
+           PESTAÑA: PLANES
+           ====================================================== -->
+
+      <section
+        id="planes"
+        class="page-section"
+      >
+
+        <div class="section-heading">
+
+          <span class="section-kicker">
+            SOLUCIONES AMÉRICA
+          </span>
+
+          <h2>
+            Haz crecer tu
+            <span class="accent">
+              oficio
+            </span>
+          </h2>
+
+          <p>
+            Registra tu oficio y permite que más personas encuentren
+            tus servicios en nuestro directorio.
+          </p>
+
+        </div>
+
+
+        <div class="plans-grid">
+
+
+          <!-- PLAN MENSUAL -->
+
+          <article class="plan-card">
+
+            <div class="plan-number">
+              01
+            </div>
+
+            <span class="plan-label">
+              PLAN MENSUAL
+            </span>
+
+            <h3>
+              Presencia flexible
+            </h3>
+
+            <p class="plan-description">
+              Una opción sencilla para comenzar a mostrar tu oficio
+              y conectar con nuevos clientes.
+            </p>
+
+            <div class="plan-price">
+              <span>
+                CONSULTAR
+              </span>
+              <small>
+                precio
+              </small>
+            </div>
+
+            <ul class="plan-features">
+
+              <li>
+                <span>✓</span>
+                Perfil en el directorio
+              </li>
+
+              <li>
+                <span>✓</span>
+                Datos de contacto
+              </li>
+
+              <li>
+                <span>✓</span>
+                Descripción de servicios
+              </li>
+
+              <li>
+                <span>✓</span>
+                Botón directo a WhatsApp
+              </li>
+
+              <li>
+                <span>✓</span>
+                Renovación mensual
+              </li>
+
+            </ul>
+
+            <button
+              class="plan-button"
+              type="button"
+              data-plan="Mensual"
+            >
+              Cotizar plan
+            </button>
+
+          </article>
+
+
+          <!-- PLAN TRIMESTRAL -->
+
+          <article class="plan-card featured">
+
+            <div class="popular-label">
+              MÁS POPULAR
+            </div>
+
+            <div class="plan-number">
+              02
+            </div>
+
+            <span class="plan-label">
+              PLAN TRIMESTRAL
+            </span>
+
+            <h3>
+              Mayor visibilidad
+            </h3>
+
+            <p class="plan-description">
+              Una alternativa para mantener tu oficio visible durante
+              más tiempo y destacar frente a otros perfiles.
+            </p>
+
+            <div class="plan-price">
+              <span>
+                CONSULTAR
+              </span>
+              <small>
+                precio
+              </small>
+            </div>
+
+            <ul class="plan-features">
+
+              <li>
+                <span>✓</span>
+                Todo lo del plan mensual
+              </li>
+
+              <li>
+                <span>✓</span>
+                Perfil destacado
+              </li>
+
+              <li>
+                <span>✓</span>
+                Mayor visibilidad
+              </li>
+
+              <li>
+                <span>✓</span>
+                Insignia de profesional
+              </li>
+
+              <li>
+                <span>✓</span>
+                Renovación trimestral
+              </li>
+
+            </ul>
+
+            <button
+              class="plan-button"
+              type="button"
+              data-plan="Trimestral"
+            >
+              Cotizar plan
+            </button>
+
+          </article>
+
+
+          <!-- PLAN ANUAL -->
+
+          <article class="plan-card">
+
+            <div class="plan-number">
+              03
+            </div>
+
+            <span class="plan-label">
+              PLAN ANUAL
+            </span>
+
+            <h3>
+              Presencia premium
+            </h3>
+
+            <p class="plan-description">
+              Mantén tu oficio presente durante todo el año y disfruta
+              de una mayor exposición dentro del directorio.
+            </p>
+
+            <div class="plan-price">
+              <span>
+                CONSULTAR
+              </span>
+              <small>
+                precio
+              </small>
+            </div>
+
+            <ul class="plan-features">
+
+              <li>
+                <span>✓</span>
+                Todo lo del plan trimestral
+              </li>
+
+              <li>
+                <span>✓</span>
+                Perfil premium
+              </li>
+
+              <li>
+                <span>✓</span>
+                Máxima visibilidad
+              </li>
+
+              <li>
+                <span>✓</span>
+                Insignia especial
+              </li>
+
+              <li>
+                <span>✓</span>
+                Renovación anual
+              </li>
+
+            </ul>
+
+            <button
+              class="plan-button"
+              type="button"
+              data-plan="Anual"
+            >
+              Cotizar plan
+            </button>
+
+          </article>
+
+        </div>
+
+
+        <!-- AYUDA -->
+
+        <div class="plans-help">
+
+          <div>
+
+            <span class="help-kicker">
+              ¿NO SABES CUÁL ELEGIR?
+            </span>
+
+            <h3>
+              Hablemos sobre tu oficio.
+            </h3>
+
+            <p>
+              Escríbenos y te ayudaremos a encontrar la opción
+              que mejor se adapte a tus necesidades.
+            </p>
+
+          </div>
+
+          <button
+            type="button"
+            class="whatsapp-main-button"
+            id="generalWhatsapp"
+          >
+            Hablar por WhatsApp
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================
+           PESTAÑA: NOSOTROS
+           ====================================================== -->
+
+      <section
+        id="nosotros"
+        class="page-section"
+      >
+
+        <div class="section-heading">
+
+          <span class="section-kicker">
+            CONÓCENOS
+          </span>
+
+          <h2>
+            Más sobre
+            <span class="accent">
+              nosotros
+            </span>
+          </h2>
+
+          <p>
+            Una plataforma pensada para conectar personas con
+            trabajadores y profesionales de diferentes oficios.
+          </p>
+
+        </div>
+
+
+        <div class="about-layout">
+
+          <div class="about-main">
+
+            <span class="about-mark">
+              SOLUCIONES<br>
+              AMÉRICA
+            </span>
+
+            <h3>
+              Conectamos necesidades
+              con personas que saben
+              hacer el trabajo.
+            </h3>
+
+            <p>
+              Soluciones América · Directorio de Oficios nace con
+              la idea de facilitar la búsqueda de trabajadores y
+              profesionales en Ibagué y sus alrededores.
+            </p>
+
+            <p>
+              Queremos que encontrar un soldador, carpintero,
+              plomero, técnico, pintor o cualquier otro profesional
+              sea mucho más rápido y sencillo.
+            </p>
+
+          </div>
+
+
+          <div class="about-points">
+
+            <article class="about-point">
+
+              <span class="point-number">
+                01
+              </span>
+
+              <div>
+
+                <h4>
+                  Fácil de encontrar
+                </h4>
+
+                <p>
+                  Los clientes pueden buscar por oficio, nombre
+                  o empresa.
+                </p>
+
+              </div>
+
+            </article>
+
+
+            <article class="about-point">
+
+              <span class="point-number">
+                02
+              </span>
+
+              <div>
+
+                <h4>
+                  Contacto directo
+                </h4>
+
+                <p>
+                  Facilitamos la comunicación entre clientes
+                  y profesionales.
+                </p>
+
+              </div>
+
+            </article>
+
+
+            <article class="about-point">
+
+              <span class="point-number">
+                03
+              </span>
+
+              <div>
+
+                <h4>
+                  Trabajo local
+                </h4>
+
+                <p>
+                  Promovemos los oficios y servicios disponibles
+                  en nuestra comunidad.
+                </p>
+
+              </div>
+
+            </article>
+
+          </div>
+
+        </div>
+
+
+        <div class="about-mission">
+
+          <span>
+            NUESTRA MISIÓN
+          </span>
+
+          <p>
+            Crear un espacio donde los trabajadores puedan mostrar
+            lo que saben hacer y donde las personas puedan encontrar
+            fácilmente el servicio que necesitan.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================
+           PESTAÑA: BENEFICIOS
+           ====================================================== -->
+
+      <section
+        id="beneficios"
+        class="page-section"
+      >
+
+        <div class="section-heading">
+
+          <span class="section-kicker">
+            PARA PROFESIONALES
+          </span>
+
+          <h2>
+            ¿Por qué aparecer
+            <span class="accent">
+              aquí?
+            </span>
+          </h2>
+
+          <p>
+            Tu trabajo merece ser encontrado por las personas
+            que necesitan exactamente lo que sabes hacer.
+          </p>
+
+        </div>
+
+
+        <div class="benefits-grid">
+
+
+          <article class="benefit-card">
+
+            <span class="benefit-icon">
+              01
+            </span>
+
+            <h3>
+              Más clientes
+            </h3>
+
+            <p>
+              Permite que nuevas personas conozcan tus servicios
+              y encuentren una forma sencilla de contactarte.
+            </p>
+
+          </article>
+
+
+          <article class="benefit-card">
+
+            <span class="benefit-icon">
+              02
+            </span>
+
+            <h3>
+              Mayor visibilidad
+            </h3>
+
+            <p>
+              Tu oficio puede aparecer frente a personas que están
+              buscando exactamente ese tipo de servicio.
+            </p>
+
+          </article>
+
+
+          <article class="benefit-card">
+
+            <span class="benefit-icon">
+              03
+            </span>
+
+            <h3>
+              Contacto directo
+            </h3>
+
+            <p>
+              Facilita la comunicación mediante información clara
+              y un acceso directo a WhatsApp.
+            </p>
+
+          </article>
+
+
+          <article class="benefit-card">
+
+            <span class="benefit-icon">
+              04
+            </span>
+
+            <h3>
+              Perfil profesional
+            </h3>
+
+            <p>
+              Presenta tu empresa, tu nombre, tu categoría y una
+              descripción de lo que haces.
+            </p>
+
+          </article>
+
+        </div>
+
+
+        <div class="benefits-cta">
+
+          <div>
+
+            <span>
+              ¿TIENES UN OFICIO?
+            </span>
+
+            <h3>
+              Haz que más personas conozcan tu trabajo.
+            </h3>
+
+          </div>
+
+          <a
+            href="admin.html"
+            class="cta-button"
+          >
+            Inscribir mi oficio
+          </a>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+
+<footer class="site-footer">
+
+  <div
+    class="wrap"
+    style="
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:10px;
+      width:100%;
+    "
+  >
+
+    <span>
+      Directorio de Oficios — Ibagué
+    </span>
+
+    <a href="admin.html">
+      Inscribir un oficio
+    </a>
+
+  </div>
+
+</footer>
+
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+
+<script src="js/particles.js"></script>
+<script src="js/data.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>  
